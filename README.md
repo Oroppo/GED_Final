@@ -1,4 +1,4 @@
-# GED_Final
+# GED Final
 
 ## How to Play:
 - WASD to move
