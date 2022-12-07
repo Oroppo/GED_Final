@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class CommandBrain : MonoBehaviour
 {
-    private Queue<ICommand> CommandQueue;
+    private Queue<ICommand> CommandQueue = new Queue<ICommand>();
 
-    private List<ICommand> CommandHistory;
+    private List<ICommand> CommandHistory = new List<ICommand>();
 
     static public CommandBrain _instance;
 
     private void Start()
     {
+
         if (_instance ==null)
         _instance = new CommandBrain();
     }
@@ -19,7 +20,7 @@ public class CommandBrain : MonoBehaviour
     {
         if (CommandQueue.Count > 0)
         {
-
+            
         }
     }
     public void UndoCommand(ICommand command)

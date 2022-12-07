@@ -15,6 +15,7 @@ public class Coin : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
+            if(CoinCounter._instance.Coins>0)
             PointsAdd.Undo();
         }
     }
@@ -24,6 +25,8 @@ public class Coin : MonoBehaviour
         if (collision.transform.name == "Player")
         {
             PointsAdd.Execute();
+            gameObject.SetActive(false);
+            
         }
     }
 

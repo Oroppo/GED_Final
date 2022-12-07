@@ -4,18 +4,36 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    List<Transform> Objects= new List<Transform>();
+    List<GameObject> Objects= new List<GameObject>();
 
     [SerializeField]
     public GameObject PooledObject;
     public GameObject Player;
+    
 
     private void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.X))
         {
-            Objects.Add(Instantiate(Player.transform));
+            Vector3 Diff = new Vector3(1, 0f, 0f);
+            Quaternion Rot = new Quaternion();
+            if (Objects.Count < 10)
+            {
+                Objects.Add(Instantiate(PooledObject, Diff + Player.transform.position, Rot));
+            }
+            else
+            {
+                foreach (GameObject Object in Objects)
+                {
+                    if (Object.activeSelf == false)
+                    {
+                        Object.transform.position = Diff + Player.transform.position;
+                        Object.SetActive(true);
+                        break;
+                    }
+                }
+            }
         }
+
     }
 }
