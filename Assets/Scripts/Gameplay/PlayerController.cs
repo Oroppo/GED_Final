@@ -77,6 +77,7 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("isAttacking");
             StartCoroutine(InitialiseAttack());
         }
+
     }
 
     IEnumerator InitialiseAttack()
@@ -95,6 +96,7 @@ public class PlayerController : MonoBehaviour
         playerCamera.transform.rotation = Quaternion.Euler(cameraRotation);
         transform.eulerAngles = new Vector3(transform.rotation.x, cameraRotation.y, transform.rotation.z);
 
+        
         transform.Translate(Vector3.right * Time.deltaTime * move.x * walkSpeed, Space.Self);
         transform.Translate(Vector3.forward * Time.deltaTime * move.y * walkSpeed, Space.Self);
 
